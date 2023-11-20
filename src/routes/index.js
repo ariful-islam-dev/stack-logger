@@ -2,6 +2,12 @@ const {Router}=require("express");
 
 const router = Router();
 
+router.get("/health", (req, res)=>{
+    res.json({
+        message: "OK"
+    }).status(200)
+})
+
 router.get("/users", (req, res)=>{
     res.json({
         name: "Ariful",
@@ -23,4 +29,4 @@ router.post("/users", (req, res, next)=>{
     }
 })
 
-module.exports = Router;
+module.exports = router;
