@@ -1,14 +1,18 @@
 const {Router}=require("express");
+const logger = require("../utils/logger")
 
 const router = Router();
 
 router.get("/health", (req, res)=>{
+    
+
     res.json({
         message: "OK"
     }).status(200)
 })
 
 router.get("/users", (req, res)=>{
+    logger.info("User list");
     res.json({
         name: "Ariful",
         age: 29

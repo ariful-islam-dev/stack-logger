@@ -1,5 +1,6 @@
 const {createLogger, format, transports} = require("winston");
 const {colorize, json, timestamp, combine} = format;;
+require("winston-daily-rotate-file");
 
 // Console Transport
 const consoleTransport = new transports.Console({
@@ -8,15 +9,18 @@ const consoleTransport = new transports.Console({
 })
 
 // File Transport
-const fileTransport=(level, filename)=>{
-    return new transports.File({
+const fileTransport=(level="info")=>{
+    return new transports.DailyRotateFile({
         level: level || "info",
         format: combine(timestamp(), json()),
-        filename: `logs/${level}/${filename}`|| "logs/info/info.log"
+        filename: `logs/${level}/${level}-%DATE%.log`|| `logs/info/info-%DATE%.log`,
+        zippedArchive: true,
+        maxFiles: "14d",
+        maxSize: "20m"
     })
 }
- const infoFileTransport = fileTransport("info", "info.log");
- const errorFileTransport = fileTransport("error", "error.log");
+ const infoFileTransport = fileTransport("info");
+ const errorFileTransport = fileTransport("error");
 // ElasticSearch transports
 
 const logger = createLogger({
@@ -26,5 +30,18 @@ const logger = createLogger({
         errorFileTransport
     ]
 })
+
+//Winston Rotate File
+// fired when a log file is created
+// fileTransport().on('new', (filename) => {});
+// // fired when a log file is rotated
+// fileTransport().on('rotate', (oldFilename, newFilename) => {});
+// // fired when a log file is archived
+// fileTransport().on('archive', (zipFilename) => {
+
+// });
+// fired when a log file is deleted
+// fileTransport().on('logRemoved', (removedFilename) => {});
+
 
 module.exports = logger;
