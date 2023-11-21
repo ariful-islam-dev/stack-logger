@@ -1,13 +1,17 @@
 version: "3.9"
 
+
+
 networks:
   elk-stack:
     name: elk-stack
     driver: bridge
-    ipam: 
-      config: 
+    ipam:
+      config:
         - subnet: 172.1.1.0/24
+
 services:
+  # Elastic Search
   elasticsearch:
     image: elasticsearch:7.9.2
     container_name: elasticsearch
@@ -18,10 +22,11 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - "ES_JAVA_OPTS=-Xms1024m-Xms1024m"
-      - "discovery.type = single-node"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "discovery.type=single-node"
+
   # Kibana
-  kibana: 
+  kibana:
     image: kibana:7.9.2
     container_name: kibana
     restart: always
