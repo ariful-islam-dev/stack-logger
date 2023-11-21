@@ -37,9 +37,15 @@
   - [ ] middleware/
   - [ ] routes/
   - [ ] utils/
+    - [ ] logger/
+      - [ ] transports
 - [x] docker-compose.yml
 - [x] README.md
 - [x] package.json
+- [ ] .gitignore
+- [ ] logs/ `Create Automatically`
+  - [ ] error/ `Auto Create`
+  - [ ] info/ `Auto Create`
 
 ## Dependecies
 - cors
@@ -52,5 +58,13 @@
 ## Dev Dependencies
 - nodemon
 
-<!-- ### Video - 130
-- 00:51:49/02:21:39 -->
+## How to run our application
+- [x] Clone This application
+- [ ] Open `Terminal`
+- [x] Run Command `yarn install` or `npm install`
+- [x] Run this command `docker compose up -d`
+- [x] Run `yarn dev`
+- [ ] Open Request Software or Method `like` Postman or Thunder Client or REST Client for Request
+- [ ] Open the browser
+- [ ] Run `http://localhost:9200` for ElasticSearch
+- [ ] Run `http://localhost:5601` for Kibana

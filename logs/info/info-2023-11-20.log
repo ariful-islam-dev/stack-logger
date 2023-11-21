@@ -1,3 +1,0 @@
-{"level":"error","message":"{\"message\":\"logger.info is not a function\",\"status\":500}","timestamp":"2023-11-20T16:11:55.213Z"}
-{"level":"info","message":"User list","timestamp":"2023-11-20T16:13:48.762Z"}
-{"level":"error","message":"{\"message\":\"Name and age is required\",\"status\":500}","timestamp":"2023-11-20T16:14:23.108Z"}
